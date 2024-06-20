@@ -1,0 +1,123 @@
+{
+  "name": "ktern-ai-2g-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:spotlight": "spotlight-sidecar",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "build-stats": "cross-env ANALYZE=true npm run build",
+    "lint": "next lint",
+    "clean": "rimraf .next .swc out coverage",
+    "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
+    "prettier": "prettier --write .",
+    "check-types": "tsc --noEmit --pretty",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "storybook:serve": "http-server storybook-static --port 6006 --silent",
+    "serve-storybook": "run-s storybook:*",
+    "test-storybook:ci": "start-server-and-test serve-storybook http://127.0.0.1:6006 test-storybook",
+    "chromatic": "npx chromatic --project-token=chpt_2f291c05279cd0e",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@builder.io/partytown": "^0.10.2",
+    "@hookform/resolvers": "^3.6.0",
+    "@mantine/core": "^7.10.2",
+    "@mantine/hooks": "^7.10.2",
+    "@next/bundle-analyzer": "^14.2.4",
+    "@sentry/nextjs": "^8.10.0",
+    "@spotlightjs/spotlight": "^2.0.0",
+    "@t3-oss/env-nextjs": "^0.10.1",
+    "cross-env": "^7.0.3",
+    "next": "14.2.4",
+    "next-intl": "^3.15.2",
+    "pino": "^9.2.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.52.0",
+    "sharp": "^0.33.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.5.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@commitlint/types": "^19.0.3",
+    "@next/eslint-plugin-next": "^14.2.4",
+    "@playwright/test": "^1.44.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.6",
+    "@semantic-release/npm": "^12.0.1",
+    "@sentry/profiling-node": "^8.10.0",
+    "@storybook/addon-essentials": "^8.1.10",
+    "@storybook/addon-interactions": "^8.1.10",
+    "@storybook/addon-links": "^8.1.10",
+    "@storybook/addon-onboarding": "^8.1.10",
+    "@storybook/blocks": "^8.1.10",
+    "@storybook/nextjs": "^8.1.10",
+    "@storybook/react": "^8.1.10",
+    "@storybook/test": "^8.1.10",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitest/ui": "^1.6.0",
+    "autoprefixer": "^10.4.19",
+    "chromatic": "^11.5.4",
+    "cssnano": "^7.0.3",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-next": "14.2.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-storybook": "^0.8.0",
+    "eslint-plugin-tailwindcss": "^3.17.3",
+    "eslint-plugin-vitest": "^0.5.4",
+    "husky": "^9.0.11",
+    "jsdom": "^24.1.0",
+    "pino-pretty": "^11.2.1",
+    "postcss": "^8.4.38",
+    "postcss-load-config": "^6.0.1",
+    "postcss-preset-mantine": "^1.15.0",
+    "postcss-simple-vars": "^7.0.1",
+    "prettier": "^3.3.2",
+    "storybook": "^8.1.10",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^1.6.0",
+    "vitest-fail-on-console": "^0.7.0"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
+  }
+}
