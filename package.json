@@ -33,7 +33,7 @@
     "@spotlightjs/spotlight": "^2.0.0",
     "@t3-oss/env-nextjs": "^0.10.1",
     "cross-env": "^7.0.3",
-    "next": "14.2.4",
+    "next": "14.2.12",
     "next-intl": "^3.15.2",
     "pino": "^9.2.0",
     "react": "^18",
